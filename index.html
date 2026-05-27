@@ -136,16 +136,19 @@
       white-space: nowrap;
     }
     .tab-nav ul {
-      display: inline-flex;
+      display: flex;
       list-style: none;
-      min-width: 100%;
+      width: 100%;
       justify-content: flex-start;
-      padding: 0 0;
+      padding: 0;
       gap: 0;
     }
     .tab-group {
-      display: inline-flex;
+      display: flex;
       align-items: stretch;
+    }
+    .tab-group:last-child {
+      margin-left: auto;
     }
     .tab-group + .tab-group {
       border-left: 2px solid var(--black);
@@ -867,7 +870,7 @@
           <p class="org">株式会社新東通信 エステティック通信チーム</p>
         </div>
         <div class="contact-info">
-          <span>代表：<a href="tel:0335388011">03-3538-8011</a></span>
+          <span>代表：<a href="tel:0345003480">03-4500-3480</a></span>
           <span style="color:rgba(255,255,255,0.4);font-size:12px">〒104-0061 東京都中央区銀座4-2-15 塚本素山ビル2F</span>
         </div>
       </div>
@@ -1137,7 +1140,7 @@
         <div class="address-box">
           <div class="address-label">サンプル品送付先</div>
           〒104-0061 東京都中央区銀座4丁目2番15号 塚本素山ビル4F<br>
-          TEL：03-3538-8011<br>
+          TEL：03-4500-3480<br>
           株式会社新東通信　エステサロンビジネス交流会事務局 宛<br>
           <strong>※6月12日（金）必着</strong>
         </div>
@@ -1192,11 +1195,16 @@
           <p class="org">株式会社新東通信 エステティック通信チーム</p>
         </div>
         <div class="contact-info">
-          <span>代表：<a href="tel:0335388011">03-3538-8011</a></span>
+          <span>代表：<a href="tel:0345003480">03-4500-3480</a></span>
           <span style="color:rgba(255,255,255,0.4);font-size:12px">〒104-0061 東京都中央区銀座4-2-15 塚本素山ビル2F</span>
         </div>
       </div>
     </section>
+
+    <!-- トップに戻る -->
+    <div style="text-align:center;padding:32px 0 48px">
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:inline-block;padding:12px 32px;background:none;border:1.5px solid var(--border);border-radius:4px;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer;transition:border-color 0.15s,color 0.15s" onmouseover="this.style.borderColor='var(--black)';this.style.color='var(--black)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--mid)'">トップに戻る</button>
+    </div>
 
   </div>
 </div><!-- /tab-manual -->
@@ -1341,7 +1349,7 @@
 
       <div class="alert alert-info">
         <strong>受賞企業の皆様へ</strong>
-        授賞式の詳細（登壇順・式次第・撮影対応など）については、事務局より別途ご連絡いたします。ご不明な点は事務局（03-3538-8011）までお問い合わせください。
+        授賞式の詳細（登壇順・式次第・撮影対応など）については、事務局より別途ご連絡いたします。ご不明な点は事務局（03-4500-3480）までお問い合わせください。
       </div>
     </section>
 
@@ -1431,10 +1439,15 @@
           <p class="org">株式会社新東通信 エステティック通信チーム</p>
         </div>
         <div class="contact-info">
-          <span>代表：<a href="tel:0335388011">03-3538-8011</a></span>
+          <span>代表：<a href="tel:0345003480">03-4500-3480</a></span>
         </div>
       </div>
     </section>
+
+    <!-- トップに戻る -->
+    <div style="text-align:center;padding:32px 0 48px">
+      <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="display:inline-block;padding:12px 32px;background:none;border:1.5px solid var(--border);border-radius:4px;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer;transition:border-color 0.15s,color 0.15s" onmouseover="this.style.borderColor='var(--black)';this.style.color='var(--black)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--mid)'">トップに戻る</button>
+    </div>
 
   </div>
 </div><!-- /tab-award -->
