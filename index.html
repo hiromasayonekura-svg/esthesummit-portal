@@ -139,8 +139,29 @@
       display: inline-flex;
       list-style: none;
       min-width: 100%;
-      justify-content: center;
-      padding: 0 12px;
+      justify-content: flex-start;
+      padding: 0 0;
+      gap: 0;
+    }
+    .tab-group {
+      display: inline-flex;
+      align-items: stretch;
+    }
+    .tab-group + .tab-group {
+      border-left: 2px solid var(--black);
+    }
+    .tab-group-label {
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--white);
+      background: var(--black);
+      white-space: nowrap;
+      border-bottom: 2px solid var(--black);
+      margin-bottom: -2px;
     }
     .tab-btn {
       display: block;
@@ -727,10 +748,16 @@
 <!-- ===== TAB NAV ===== -->
 <nav class="tab-nav">
   <ul>
-    <li><button class="tab-btn active" data-tab="tab-manual">出展社マニュアル</button></li>
-    <li><button class="tab-btn" data-tab="tab-form">出展社情報の提出</button></li>
-    <li><button class="tab-btn" data-tab="tab-todo">提出・準備チェックリスト</button></li>
-    <li><button class="tab-btn" data-tab="tab-award">授賞式参加者様へのご案内</button></li>
+    <li class="tab-group">
+      <span class="tab-group-label">出展社</span>
+      <button class="tab-btn active" data-tab="tab-manual">出展社マニュアル</button>
+      <button class="tab-btn" data-tab="tab-form">出展社情報の提出</button>
+      <button class="tab-btn" data-tab="tab-todo">提出・準備チェックリスト</button>
+    </li>
+    <li class="tab-group">
+      <span class="tab-group-label">授賞式</span>
+      <button class="tab-btn" data-tab="tab-award">授賞式参加者様へのご案内</button>
+    </li>
   </ul>
 </nav>
 
@@ -840,7 +867,6 @@
           <p class="org">株式会社新東通信 エステティック通信チーム</p>
         </div>
         <div class="contact-info">
-          <span>担当直通：<a href="tel:08049814856">080-4981-4856</a></span>
           <span>代表：<a href="tel:0335388011">03-3538-8011</a></span>
           <span style="color:rgba(255,255,255,0.4);font-size:12px">〒104-0061 東京都中央区銀座4-2-15 塚本素山ビル2F</span>
         </div>
@@ -874,6 +900,21 @@
       <span class="manual-divider-text">以下はPDFマニュアルと同じ内容のテキスト版です。印刷には上記PDFをご利用ください。</span>
     </div>
 
+    <!-- 目次 -->
+    <nav style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:20px 24px;margin-bottom:32px">
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--light);margin-bottom:12px">目次</div>
+      <ol style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:6px 24px">
+        <li><a href="#overview" style="color:var(--dark);text-decoration:none;font-size:13px">開催概要</a></li>
+        <li><a href="#schedule" style="color:var(--dark);text-decoration:none;font-size:13px">全体スケジュール</a></li>
+        <li><a href="#checkin" style="color:var(--dark);text-decoration:none;font-size:13px">搬入・搬出</a></li>
+        <li><a href="#parking" style="color:var(--dark);text-decoration:none;font-size:13px">周辺駐車場</a></li>
+        <li><a href="#setup" style="color:var(--dark);text-decoration:none;font-size:13px">施工・装飾・設備</a></li>
+        <li><a href="#sales" style="color:var(--dark);text-decoration:none;font-size:13px">製品販売・試飲・試食</a></li>
+        <li><a href="#lottery" style="color:var(--dark);text-decoration:none;font-size:13px">抽選会・来場者サンプル</a></li>
+        <li><a href="#rules" style="color:var(--dark);text-decoration:none;font-size:13px">禁止事項・注意事項</a></li>
+      </ol>
+    </nav>
+
     <!-- 開催概要 -->
     <section class="section" id="overview">
       <h2 class="section-title">開催概要</h2>
@@ -884,7 +925,7 @@
         </div>
         <div class="info-item">
           <div class="label">会場</div>
-          <div class="value">渋谷ストリームホール<small>東京都渋谷区渋谷3-21-3</small></div>
+          <div class="value">渋谷ストリームホール<small>東京都渋谷区渋谷3-21-3　<a href="https://maps.google.com/?q=渋谷ストリームホール" target="_blank" style="color:var(--mid);font-weight:600">地図を見る</a></small></div>
         </div>
         <div class="info-item">
           <div class="label">入場料</div>
@@ -956,7 +997,7 @@
       <h2 class="section-title">搬入・搬出</h2>
       <div class="alert alert-warn">
         <strong>重要：事前預かり不可</strong>
-        会場の都合により荷物の事前お預かりができません。搬入物は原則<strong>当日（6/19）</strong>にご持参ください。
+        会場の都合により荷物の事前お預かりができません。搬入物は原則<strong>当日（6/19）当日持参</strong>をお願いします。
       </div>
       <div class="info-grid" style="margin-bottom:16px">
         <div class="info-item">
@@ -1151,7 +1192,6 @@
           <p class="org">株式会社新東通信 エステティック通信チーム</p>
         </div>
         <div class="contact-info">
-          <span>担当直通：<a href="tel:08049814856">080-4981-4856</a></span>
           <span>代表：<a href="tel:0335388011">03-3538-8011</a></span>
           <span style="color:rgba(255,255,255,0.4);font-size:12px">〒104-0061 東京都中央区銀座4-2-15 塚本素山ビル2F</span>
         </div>
@@ -1301,7 +1341,7 @@
 
       <div class="alert alert-info">
         <strong>受賞企業の皆様へ</strong>
-        授賞式の詳細（登壇順・式次第・撮影対応など）については、事務局より別途ご連絡いたします。ご不明な点は事務局（080-4981-4856）までお問い合わせください。
+        授賞式の詳細（登壇順・式次第・撮影対応など）については、事務局より別途ご連絡いたします。ご不明な点は事務局（03-3538-8011）までお問い合わせください。
       </div>
     </section>
 
@@ -1312,13 +1352,21 @@
       <div class="card" style="padding:0">
         <table class="schedule-table">
           <tbody>
+            <tr class="highlight-row">
+              <td class="time">12:45</td>
+              <td class="event"><strong>受賞企業 会場入り</strong><small>リハーサル参加のため、12:45までに4F受付へお越しください</small></td>
+            </tr>
+            <tr class="highlight-row">
+              <td class="time">13:00〜</td>
+              <td class="event"><strong>全体リハーサル</strong><small>登壇者リハーサル含む</small></td>
+            </tr>
+            <tr>
+              <td class="time">13:30</td>
+              <td class="event">受付開始・開場</td>
+            </tr>
             <tr>
               <td class="time">14:00〜15:00</td>
               <td class="event">第1部｜トークショー（基調講演）</td>
-            </tr>
-            <tr class="highlight-row">
-              <td class="time">15:00</td>
-              <td class="event"><strong>授賞式 開始</strong><small>受賞企業の皆様は開始10分前までにスタッフへお声がけください</small></td>
             </tr>
             <tr class="highlight-row">
               <td class="time">15:00〜15:30</td>
@@ -1343,10 +1391,10 @@
       <div class="card">
         <div class="card-title">当日の集合・進行</div>
         <ul class="checklist">
-          <li>授賞式開始（15:00）の10分前までに、会場スタッフへお声がけください。</li>
-          <li>登壇の順番・位置については、当日スタッフよりご案内します。</li>
+          <li>12:45までに4F受付にてご受付をお済ませください。</li>
+          <li>登壇の順番・位置については、リハーサル時にスタッフよりご案内します。</li>
           <li>受賞コメントは30秒〜1分程度を目安にお願いします。</li>
-          <li>名刺・会社資料など、ご自身でお持ちいただけるものはご持参ください。</li>
+          <li>壇上では受賞盾をお受け取りいただいた後、記念写真の撮影を行います。</li>
         </ul>
       </div>
 
@@ -1362,9 +1410,7 @@
       <div class="card">
         <div class="card-title">服装・その他</div>
         <ul class="checklist">
-          <li>ビジネスカジュアル以上の服装を推奨します。</li>
-          <li>交流会（第3部）もそのまま参加可能です。</li>
-          <li>当日の詳細は事務局から改めてご連絡します。</li>
+          <li>ビジネスカジュアル以上の服装を推奨します。服装の参考として、このページ上部の昨年ダイジェスト動画をご覧ください。</li>
         </ul>
       </div>
 
@@ -1385,7 +1431,6 @@
           <p class="org">株式会社新東通信 エステティック通信チーム</p>
         </div>
         <div class="contact-info">
-          <span>担当直通：<a href="tel:08049814856">080-4981-4856</a></span>
           <span>代表：<a href="tel:0335388011">03-3538-8011</a></span>
         </div>
       </div>
