@@ -130,9 +130,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 2px solid var(--black);
       background: var(--white);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 2px solid var(--black);
       overflow-x: auto;
       white-space: nowrap;
     }
@@ -173,6 +172,97 @@
     /* ===== TAB PANELS ===== */
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
+
+    /* ===== マニュアル本文区切り ===== */
+    .manual-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 8px 0 32px;
+      padding: 14px 20px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 4px;
+    }
+    .manual-divider-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.5);
+      white-space: nowrap;
+    }
+    .manual-divider-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ===== 授賞式 参加フォームCTA ===== */
+    .award-cta {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 6px;
+      padding: 28px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .award-cta-text .cta-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 6px;
+    }
+    .award-cta-text .cta-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .award-cta-text .cta-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+    }
+    .award-cta-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--white);
+      color: var(--black);
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .award-cta-btn:hover { opacity: 0.9; }
+
+    /* ===== 参考動画 ===== */
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      background: #000;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .video-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .video-placeholder {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+    }
 
     /* ===== CONTAINER ===== */
     .container {
@@ -639,6 +729,7 @@
   <ul>
     <li><button class="tab-btn active" data-tab="tab-manual">出展社マニュアル</button></li>
     <li><button class="tab-btn" data-tab="tab-form">出展社情報の提出</button></li>
+    <li><button class="tab-btn" data-tab="tab-todo">提出・準備チェックリスト</button></li>
     <li><button class="tab-btn" data-tab="tab-award">授賞式参加者様へのご案内</button></li>
   </ul>
 </nav>
@@ -649,81 +740,6 @@
 <!-- ================================================================ -->
 <div class="tab-panel" id="tab-form">
   <div class="container">
-
-    <!-- TODOリスト -->
-    <section class="section" id="todo">
-      <h2 class="section-title">提出・準備 チェックリスト</h2>
-      <p style="font-size:13px;color:var(--mid);margin-bottom:16px">
-        各項目をクリックすると完了にマークできます。進捗はブラウザに保存されます。
-      </p>
-
-      <div class="todo-progress">
-        <div class="todo-progress-bar-wrap">
-          <div class="todo-progress-bar" id="todoBar" style="width:0%"></div>
-        </div>
-        <span class="todo-progress-text" id="todoText">0 / 7 完了</span>
-        <button class="todo-reset" onclick="resetTodo()">リセット</button>
-      </div>
-
-      <ul class="todo-list" id="todoList">
-        <li class="todo-item" data-id="1" onclick="toggleTodo(this)">
-          <div class="todo-checkbox"></div>
-          <div class="todo-body">
-            <div class="todo-title">出展社情報フォームを提出する</div>
-            <div class="todo-desc">担当者情報・展示製品・電源・車両搬入など</div>
-          </div>
-          <div class="todo-deadline">6月5日（金）締切</div>
-        </li>
-        <li class="todo-item" data-id="2" onclick="toggleTodo(this)">
-          <div class="todo-checkbox"></div>
-          <div class="todo-body">
-            <div class="todo-title">来場者サンプルを発送する（参加社のみ）</div>
-            <div class="todo-desc">200個・A4サイズ以内・銀座の事務局宛</div>
-          </div>
-          <div class="todo-deadline">6月12日（金）必着</div>
-        </li>
-        <li class="todo-item" data-id="3" onclick="toggleTodo(this)">
-          <div class="todo-checkbox"></div>
-          <div class="todo-body">
-            <div class="todo-title">抽選会景品を準備する（参加社のみ）</div>
-            <div class="todo-desc">製品現品・最大30名分・当日持参</div>
-          </div>
-          <div class="todo-deadline">当日持参</div>
-        </li>
-        <li class="todo-item" data-id="4" onclick="toggleTodo(this)">
-          <div class="todo-checkbox"></div>
-          <div class="todo-body">
-            <div class="todo-title">車両搬入を申請する（必要な場合）</div>
-            <div class="todo-desc">フォームの車両搬入欄に台数・車両名・ナンバーを記入</div>
-          </div>
-          <div class="todo-deadline">6月5日（金）締切</div>
-        </li>
-        <li class="todo-item" data-id="5" onclick="toggleTodo(this)">
-          <div class="todo-checkbox"></div>
-          <div class="todo-body">
-            <div class="todo-title">展示物・ブース装飾を準備する</div>
-            <div class="todo-desc">ブース枠内に収まるサイズ・転倒防止の固定を確認</div>
-          </div>
-          <div class="todo-deadline">当日搬入</div>
-        </li>
-        <li class="todo-item" data-id="6" onclick="toggleTodo(this)">
-          <div class="todo-checkbox"></div>
-          <div class="todo-body">
-            <div class="todo-title">佐川急便の着払い伝票を用意する（宅配便で搬出する場合）</div>
-            <div class="todo-desc">会場での伝票準備なし・記入済みのものを持参</div>
-          </div>
-          <div class="todo-deadline">当日持参</div>
-        </li>
-        <li class="todo-item" data-id="7" onclick="toggleTodo(this)">
-          <div class="todo-checkbox"></div>
-          <div class="todo-body">
-            <div class="todo-title">当日の搬入スケジュールを確認する</div>
-            <div class="todo-desc">搬入 10:30〜13:00 / 撤収 18:30〜19:30</div>
-          </div>
-          <div class="todo-deadline">6月19日（金）</div>
-        </li>
-      </ul>
-    </section>
 
     <!-- 提出内容の説明 -->
     <section class="section" id="submit-guide">
@@ -851,6 +867,12 @@
         <a href="./manual.pdf" download style="display:inline-block;padding:10px 24px;background:var(--black);color:#fff;font-size:13px;font-weight:600;text-decoration:none;border-radius:4px;white-space:nowrap">PDFをダウンロード</a>
       </div>
     </section>
+
+    <!-- マニュアル本文 区切り -->
+    <div class="manual-divider">
+      <span class="manual-divider-label">MANUAL</span>
+      <span class="manual-divider-text">以下はPDFマニュアルと同じ内容のテキスト版です。印刷には上記PDFをご利用ください。</span>
+    </div>
 
     <!-- 開催概要 -->
     <section class="section" id="overview">
@@ -1141,7 +1163,91 @@
 
 
 <!-- ================================================================ -->
-<!-- TAB 3：授賞式参加者向け                                          -->
+<!-- TAB 3：提出・準備チェックリスト                                  -->
+<!-- ================================================================ -->
+<div class="tab-panel" id="tab-todo">
+  <div class="container">
+
+    <section class="section" id="todo">
+      <h2 class="section-title">提出・準備 チェックリスト</h2>
+      <p style="font-size:13px;color:var(--mid);margin-bottom:16px">
+        各項目をクリックすると完了にマークできます。進捗はブラウザに保存されます。
+      </p>
+
+      <div class="todo-progress">
+        <div class="todo-progress-bar-wrap">
+          <div class="todo-progress-bar" id="todoBar" style="width:0%"></div>
+        </div>
+        <span class="todo-progress-text" id="todoText">0 / 7 完了</span>
+        <button class="todo-reset" onclick="resetTodo()">リセット</button>
+      </div>
+
+      <ul class="todo-list" id="todoList">
+        <li class="todo-item" data-id="1" onclick="toggleTodo(this)">
+          <div class="todo-checkbox"></div>
+          <div class="todo-body">
+            <div class="todo-title">出展社情報フォームを提出する</div>
+            <div class="todo-desc">担当者情報・展示製品・電源・車両搬入など</div>
+          </div>
+          <div class="todo-deadline">6月5日（金）締切</div>
+        </li>
+        <li class="todo-item" data-id="2" onclick="toggleTodo(this)">
+          <div class="todo-checkbox"></div>
+          <div class="todo-body">
+            <div class="todo-title">来場者サンプルを発送する（参加社のみ）</div>
+            <div class="todo-desc">200個・A4サイズ以内・銀座の事務局宛</div>
+          </div>
+          <div class="todo-deadline">6月12日（金）必着</div>
+        </li>
+        <li class="todo-item" data-id="3" onclick="toggleTodo(this)">
+          <div class="todo-checkbox"></div>
+          <div class="todo-body">
+            <div class="todo-title">抽選会景品を準備する（参加社のみ）</div>
+            <div class="todo-desc">製品現品・最大30名分・当日持参</div>
+          </div>
+          <div class="todo-deadline">当日持参</div>
+        </li>
+        <li class="todo-item" data-id="4" onclick="toggleTodo(this)">
+          <div class="todo-checkbox"></div>
+          <div class="todo-body">
+            <div class="todo-title">車両搬入を申請する（必要な場合）</div>
+            <div class="todo-desc">フォームの車両搬入欄に台数・車両名・ナンバーを記入</div>
+          </div>
+          <div class="todo-deadline">6月5日（金）締切</div>
+        </li>
+        <li class="todo-item" data-id="5" onclick="toggleTodo(this)">
+          <div class="todo-checkbox"></div>
+          <div class="todo-body">
+            <div class="todo-title">展示物・ブース装飾を準備する</div>
+            <div class="todo-desc">ブース枠内に収まるサイズ・転倒防止の固定を確認</div>
+          </div>
+          <div class="todo-deadline">当日搬入</div>
+        </li>
+        <li class="todo-item" data-id="6" onclick="toggleTodo(this)">
+          <div class="todo-checkbox"></div>
+          <div class="todo-body">
+            <div class="todo-title">佐川急便の着払い伝票を用意する（宅配便で搬出する場合）</div>
+            <div class="todo-desc">会場での伝票準備なし・記入済みのものを持参</div>
+          </div>
+          <div class="todo-deadline">当日持参</div>
+        </li>
+        <li class="todo-item" data-id="7" onclick="toggleTodo(this)">
+          <div class="todo-checkbox"></div>
+          <div class="todo-body">
+            <div class="todo-title">当日の搬入スケジュールを確認する</div>
+            <div class="todo-desc">搬入 10:30〜13:00 / 撤収 18:30〜19:30</div>
+          </div>
+          <div class="todo-deadline">6月19日（金）</div>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+</div><!-- /tab-todo -->
+
+
+<!-- ================================================================ -->
+<!-- TAB 4：授賞式参加者向け                                          -->
 <!-- ================================================================ -->
 <div class="tab-panel" id="tab-award">
   <div class="award-hero">
@@ -1152,6 +1258,31 @@
   </div>
 
   <div class="container">
+
+    <!-- 参加者情報フォーム CTA -->
+    <section class="section" style="padding-top:32px;padding-bottom:0">
+      <div class="award-cta">
+        <div class="award-cta-text">
+          <div class="cta-label">REQUIRED</div>
+          <div class="cta-title">参加者情報の事前提出をお願いします</div>
+          <div class="cta-desc">席数管理のため、授賞式にご参加される方のお名前・所属を事前にご登録ください。</div>
+        </div>
+        <a href="https://forms.gle/QdAqM2qU2d5A4stQ8" target="_blank" class="award-cta-btn">参加者情報を提出する</a>
+      </div>
+    </section>
+
+    <!-- 昨年ダイジェスト動画 -->
+    <section class="section" id="award-video">
+      <h2 class="section-title">昨年のダイジェスト動画</h2>
+      <div class="video-wrap">
+        <!-- ▼▼▼ Googleドライブの共有URLが届き次第、以下のsrcを更新してください ▼▼▼ -->
+        <!-- 例: src="https://drive.google.com/file/d/【ファイルID】/preview" -->
+        <div class="video-placeholder">動画URLを設定してください（Googleドライブの共有リンクをsrcに入力）</div>
+        <!-- <iframe src="https://drive.google.com/file/d/【ここにファイルID】/preview" allowfullscreen></iframe> -->
+        <!-- ▲▲▲ ここまで ▲▲▲ -->
+      </div>
+      <p style="font-size:12px;color:var(--light);margin-top:8px">※2025年開催のエステサロンビジネス交流会のダイジェスト映像です。</p>
+    </section>
 
     <!-- 授賞式概要 -->
     <section class="section" id="award-overview">
