@@ -751,7 +751,7 @@
     <li class="tab-group">
       <span class="tab-group-label">出展社</span>
       <button class="tab-btn active" data-tab="tab-manual">出展社マニュアル</button>
-      <button class="tab-btn" data-tab="tab-form">出展社情報の提出</button>
+      <button class="tab-btn" data-tab="tab-form">フォーム提出</button>
       <button class="tab-btn" data-tab="tab-todo">提出・準備チェックリスト</button>
     </li>
     <li class="tab-group">
@@ -768,16 +768,42 @@
 <div class="tab-panel" id="tab-form">
   <div class="container">
 
-    <!-- 提出内容の説明 -->
-    <section class="section" id="submit-guide">
-      <h2 class="section-title">提出内容について</h2>
+    <!-- 1. フォームボタン（冒頭） -->
+    <section class="section" id="form-top">
+      <h2 class="section-title">出展社情報を提出する</h2>
+      <div class="form-cta" style="padding:24px 0 0">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1ghRntT4Vn9MLA5mFsqGnbiHqpB69HU3j3nuHQCpMDHZQ3A/viewform?usp=sharing&ouid=116332089055966837802"
+           target="_blank" class="btn-primary">
+          出展社情報を提出する
+        </a>
+        <p class="btn-note">Googleフォームが開きます。スマートフォン・PCどちらからでも入力可能です。</p>
+      </div>
+    </section>
 
+    <!-- 2. 提出締め切り -->
+    <section class="section" id="deadline">
+      <h2 class="section-title">提出締め切り</h2>
       <div class="alert alert-warn">
         <strong>提出締切：2026年6月5日（金）</strong>
         期限を過ぎると対応できない場合があります。お早めにご提出ください。
       </div>
+    </section>
 
-      <table class="submit-table" style="margin-bottom:20px">
+    <!-- 3. 画像データの提出 -->
+    <section class="section" id="image-submit">
+      <h2 class="section-title">画像データの提出について</h2>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:16px 20px">
+        <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:var(--dark);display:flex;flex-direction:column;gap:10px">
+          <li><strong>企業・ブランドロゴ：</strong>担当営業までメールにてお送りください（PNG／JPG／AI・推奨300dpi以上）</li>
+          <li><strong>抽選会 商品画像：</strong>景品提供をご予定の場合、同様に担当営業までメールにてお送りください（PNG／JPG・推奨300dpi以上）</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. 提出内容について -->
+    <section class="section" id="submit-guide">
+      <h2 class="section-title">提出内容について</h2>
+      <table class="submit-table" style="margin-bottom:0">
         <thead>
           <tr>
             <th style="width:40%">項目</th>
@@ -858,16 +884,11 @@
           </tr>
         </tbody>
       </table>
+    </section>
 
-      <div style="background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:16px 20px;margin-bottom:20px">
-        <div style="font-size:13px;font-weight:700;color:var(--black);margin-bottom:8px">画像データの提出について（メール送付）</div>
-        <ul style="list-style:none;padding:0;margin:0;font-size:13px;color:var(--dark);display:flex;flex-direction:column;gap:6px">
-          <li><strong>企業・ブランドロゴ：</strong>担当営業までメールにてお送りください（PNG／JPG／AI・推奨300dpi以上）</li>
-          <li><strong>抽選会 商品画像：</strong>景品提供をご予定の場合、同様に担当営業までメールにてお送りください（PNG／JPG・推奨300dpi以上）</li>
-        </ul>
-      </div>
-
-      <div class="form-cta">
+    <!-- 5. フォームボタン（再掲） -->
+    <section class="section" id="form-bottom">
+      <div class="form-cta" style="padding:8px 0 0">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1ghRntT4Vn9MLA5mFsqGnbiHqpB69HU3j3nuHQCpMDHZQ3A/viewform?usp=sharing&ouid=116332089055966837802"
            target="_blank" class="btn-primary">
           出展社情報を提出する
